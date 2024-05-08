@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+        }
+        .doc-id {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .score {
+            font-style: italic;
+            color: #666;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        <h2>Query: {{ query }}</h2>
+        <h3>Top 3 ranked documents based on TF-IDF</h3>
+        <ul>
+            {% for doc_id, score in tfidf_ranked_docs %}
+                <li><span class="doc-id">Document {{ doc_id }} - </span><span class="score">Score: {{ score }}</span><br>Text: {{ documents[doc_id] }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Top 3 ranked documents based on Cosine Similarity</h3>
+        <ul>
+            {% for doc_id, score in cosine_ranked_docs %}
+                <li><span class="doc-id">Document {{ doc_id }} - </span><span class="score">Score: {{ score }}</span><br>Text: {{ documents[doc_id] }}</li>
+            {% endfor %}
+        </ul>
+        <div class="back-link">
+            <a href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
