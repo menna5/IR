@@ -54,13 +54,13 @@
     <div class="container">
         <h1>Search Results</h1>
         <h2>Query: {{ query }}</h2>
-        <h3>Top 3 ranked documents based on TF-IDF</h3>
+        <h3>Top ranked documents based on TF-IDF</h3>
         <ul>
             {% for doc_id, score in tfidf_ranked_docs %}
                 <li><span class="doc-id">Document {{ doc_id }} - </span><span class="score">Score: {{ score }}</span><br>Text: {{ documents[doc_id] }}</li>
             {% endfor %}
         </ul>
-        <h3>Top 3 ranked documents based on Cosine Similarity</h3>
+        <h3>Top ranked documents based on Cosine Similarity</h3>
         <ul>
             {% for doc_id, score in cosine_ranked_docs %}
                 <li><span class="doc-id">Document {{ doc_id }} - </span><span class="score">Score: {{ score }}</span><br>Text: {{ documents[doc_id] }}</li>
